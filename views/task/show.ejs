@@ -1,0 +1,32 @@
+<% layout('/boilerplates/main.ejs') -%> 
+
+<div class="row mb-3">
+    <div class="col-sm-8 offset-sm-2">
+        <% for(let task of tasks){ %>
+            <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"><%= task.title %> </h5>
+                  <h6 class="card-subtitle mb-2 text-muted"> <i>Created by </i> <%= task.creator.username %>  </h6>
+                  <p class="card-text"><%= task.description %> </p>
+                </div>
+                <% if(currentPerson){ %> 
+                <div class="card-body">
+                    <% if( task.creator._id.equals(currentPerson._id)){ %> 
+                    <form action="/admin/task?_method=DELETE" class="d-inline" method="post">
+                        <input type="text" name="id" value="<%= task._id %>" hidden>
+                        <button class="btn btn-danger">Delete Task</button>
+                    </form>
+                    <% } %>
+                    <% if(assignTaskId){ %> 
+                    <form action="/volunteer/assign?_method=PUT" class="d-inline" method="post">
+                        <input type="text" name="assignTaskId" value="<%= assignTaskId %>" hidden>
+                        <input type="text" name="taskId" value="<%= task._id %>" hidden>
+                        <button class="btn btn-success">Assign Task</button>
+                    </form>
+                    <% } %> 
+                </div>
+              <% } %>
+            </div>
+        <% } %> 
+    </div>
+</div>

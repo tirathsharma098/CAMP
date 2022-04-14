@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Task</title>
+    <!-- bootstrap included -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body class="vh-100 d-flex flex-column">
+    <%- include('../partials/navBar.ejs') %>
+   
+    <div class="container mt-3">
+        <%- include('../partials/flashPopUp.ejs') %>
+        <%- body -%>
+    </div>
+
+    <!-- FOOTER COMES HERE -->
+    <%- include('../partials/footer.ejs') %>
+    <!-- Bootjs included here -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Boot validation -->
+    <script src="/bootstrap/js/validateForm.js"></script>
+</body>
+</html>

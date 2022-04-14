@@ -1,0 +1,85 @@
+<% layout('/boilerplates/main.ejs') -%>
+
+<link rel="stylesheet" href="/css/home.css">
+
+<% if(!currentPerson){ %>
+
+    <div class="h-25 row">
+        <div class="col d-flex justify-content-center">
+            <div>
+            <img src="/assets/images/TirathSharma.jpg" alt="Tirath Sharma Profile image" title="Created by Tirath Sharma" height="400px">
+            <div><b>Created by Tirath Sharma</b></div>
+        </div>
+        </div>
+        <div class="col py-3 d-flex flex-column justify-content-center">
+            <div class="row mb-3 py-3 display-message text-center">
+                <h2>Admin LogIn</h2>
+                <p>
+                    LogIn as an Admin, to Manage all Volunteers, add Tasks for Volunteers or Assign Task to the Volunteers and many more to make things easier for you to select the right candidate at right time ):
+                </p>
+            </div>
+            <div class="row py-3 display-message text-center">
+                <h2>Volunteers Logged In</h2>
+                <p>
+                    LogIn as an Volunteer to View all the tasks that have assigned by the company to you so that you can easily view details of all tasks at one place in one goal.
+                </p>
+            </div>
+        </div>
+    </div>
+
+<% }else if(!currentPerson.isAdmin){ %>
+
+    <div class="row volunteer-main-box pb-5">
+        <div class="col d-flex justify-content-center">
+            <div>
+            <img src="/assets/images/TirathSharma.jpg" alt="Tirath Sharma Profile image" title="Created by Tirath Sharma" height="400px">
+            <div><b>Created by Tirath Sharma</b></div>
+        </div>
+        </div>
+        <div class="col py-3 d-flex flex-column justify-content-center">
+            
+            <div class="row py-3 display-message text-center">
+                <h2>Welcome <%= currentPerson.fullname %> </h2>
+                <p>
+                    View all the tasks that have assigned by the company to you so that you can easily view details of all tasks at one place in one goal.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-5">
+        <div class="text-center col-sm-8 offset-2">
+            <h1>All Assignments</h1>
+            <% for(let task of volunteer.assignment){ %>
+                <div class="card my-3">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= task.title %> </h5>
+                      <p class="card-text"><%= task.description %> </p>
+                    </div>
+                  </div>
+            <% } %> 
+        </div>
+    </div>
+
+<% }else if(currentPerson.isAdmin){ %>
+
+
+    <div class="h-25 row">
+        <div class="col d-flex justify-content-center">
+            <div>
+            <img src="/assets/images/TirathSharma.jpg" alt="Tirath Sharma Profile image" title="Created by Tirath Sharma" height="400px">
+            <div><b>Created by Tirath Sharma</b></div>
+        </div>
+        </div>
+        <div class="col py-3 d-flex flex-column justify-content-center">
+            <div class="row mb-3 py-3 display-message text-center">
+                <h2>Welcome <%= currentPerson.fullname %> </h2>
+                <p>
+                    You can Manage all Volunteers, add Tasks for Volunteers or Assign Task to the Volunteers and many more to make things easier for you to select the right candidate at right time ):
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+<% } %> 

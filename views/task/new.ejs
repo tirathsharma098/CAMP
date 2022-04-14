@@ -1,0 +1,20 @@
+<% layout('/boilerplates/main.ejs') -%>
+
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <h1>Create New Task</h1>
+        <form action="/admin/task" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+            <label for="title" class="form-label">Task Title</label>
+            <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp" required>
+            <div id="titleHelp" class="form-text">Title should be very specific to task</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Task Description</label>
+                <textarea type="text" name="description" class="form-control" id="description" aria-describedby="descriptionHelp" required></textarea>
+                <div id="descriptionHelp" class="form-text">Take your time to write a good description</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Create New Task</button>
+        </form>
+    </div>
+</div>

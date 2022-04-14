@@ -1,0 +1,61 @@
+<% layout('/boilerplates/main.ejs') -%>
+
+<div>
+    <div class="table-responsive-sm">
+        <table class="table table-hover" style="text-align: center;  width: inherit !important;">
+            <thead>
+                <tr>
+                    <th scope="col">UserID</th>
+                    <th style="white-space: nowrap;" scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Skills</th>
+                    <th  style="width: 500px;" scope="col">Qualifications</th>
+                    <th style="width: 900px;" scope="col">AssignMents</th>
+                    <th style="white-space: nowrap;" scope="col">Added By</th>
+                    <th style="width: 500px;" scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let volunteer of allVolunteer){ %>
+                    <tr>
+                        <th scope="row"> <%= volunteer.username %> </th>
+                        <td style="white-space: nowrap;"> <%= volunteer.fullname %> </td>
+                        <td> <%= volunteer.email %> </td>
+                        <td style="width: 500px;"> <%= volunteer.address %> </td>
+                        <td style="width: 400px;"> <%= volunteer.skills %> </td>
+                        <td style="width: 500px;"> <%= volunteer.qualifications %> </td>
+                        <td style="width: 900px;">
+                            <ol>
+                                <% for(let task of volunteer.assignment){ %>
+                                   <li><%= task.title %> </li>
+                                <% } %>
+                            </ol>
+                        </td>
+                        <td> <%= volunteer.addedBy.username %> </td>
+                        <td>
+                            <table>
+                                <tbody>
+                                <tr><td>
+                                    <form action="/volunteer/assign" method="post">
+                                        <input type="text" name="id" value="<%= volunteer._id %>" hidden>
+                                        <button class="btn btn-primary">Assign Task</button>
+                                    </form>
+                                </td></tr>
+                                <% if(volunteer.addedBy._id.equals(currentPerson._id)){ %>
+                                <tr><td>
+                                    <form action="/volunteer?_method=DELETE" method="post">
+                                        <input type="text" name="id" value="<%= volunteer._id %>" hidden>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td></tr>
+                                <% } %>
+                            </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                <% } %> 
+            </tbody>
+        </table>
+    </div>
+</div>

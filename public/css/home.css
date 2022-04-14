@@ -1,0 +1,16 @@
+
+.display-message{
+    background-color: #f1faee;
+    
+    border-radius: 30px;
+}
+
+.display-message > h2 {
+    color: #126782;
+    text-decoration: underline;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.volunteer-main-box {
+    border-bottom: solid 1px rgb(149, 149, 149);
+}

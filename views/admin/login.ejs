@@ -1,0 +1,19 @@
+<% layout('/boilerplates/main.ejs') -%>
+
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <h1>LogIn Admin</h1>
+        <form action="/admin/login" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+            <label for="username" class="form-label">Admin ID</label>
+            <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Admin ID" required>
+            <div id="usernameHelp" class="form-text">Enter Your AdminID provided by company</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Admin Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">LogIn Admin</button>
+        </form>
+    </div>
+</div>

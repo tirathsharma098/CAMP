@@ -1,0 +1,52 @@
+
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <img src="/assets/logos/meanLogo.jpg" alt="Home Page logo" title="Created by Tirath Sharma" width="40" height="32" role="img"  class="bi me-2">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a class="nav-link px-2 text-white" href="/">Home</a>
+          </li>
+          <% if(currentPerson && currentPerson.isAdmin && currentPerson.isAdmin == true){ %> 
+          <li>
+            <a href="/volunteer/show" class="nav-link px-2 text-white">Manage Volunteer</a>
+          </li>
+          <li>
+            <a href="/admin/task/new" class="nav-link px-2 text-white">Create Task</a>
+          </li>
+          <li>
+            <a href="/admin/task" class="nav-link px-2 text-white">All Tasks</a>
+          </li>
+          <li>
+            <a href="/volunteer/register" class="nav-link px-2 text-white">Add Volunteer</a>
+          </li>
+          <% } %> 
+        </ul>
+
+        <div class="text-end">
+         
+            <% if(!currentPerson){ %> 
+              
+                <a href="/volunteer/login" type="button" class="btn btn-outline-light me-2">Volunteer Login</a>
+              
+              
+                  <a href="/admin/login" type="button" class="btn btn-warning">Admin Login</a>
+              
+              <% }else if(currentPerson.isAdmin){ %>
+              
+                <a href="/admin/logout" class="btn btn-outline-light me-2">Admin Logout</a>
+              
+              <% }else if(currentPerson){ %> 
+              
+                <a href="/volunteer/logout" class="btn btn-outline-light me-2">Volunteer Logout</a>
+              
+              <% } %> 
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
